@@ -1,12 +1,12 @@
 import shortid from 'shortid';
 
 const dataProductos = [
-  {id: shortid.generate(), descripcion: '#1 - Producto'},
-  {id: shortid.generate(), descripcion: '#2 - Producto'},
-  {id: shortid.generate(), descripcion: '#3 - Producto'},
-  {id: shortid.generate(), descripcion: '#4 - Producto'},
-  {id: shortid.generate(), descripcion: '#5 - Producto'},
-  {id: shortid.generate(), descripcion: '#6 - Producto'},
+  {id: shortid.generate(), descripcion: 'Agata'},
+  {id: shortid.generate(), descripcion: 'Cuarzo'},
+  {id: shortid.generate(), descripcion: 'Topacio'},
+  {id: shortid.generate(), descripcion: 'Hematita'},
+  {id: shortid.generate(), descripcion: 'Mármol'},
+  {id: shortid.generate(), descripcion: 'Yeso'},
 ];
 
 const dataCarrito = [

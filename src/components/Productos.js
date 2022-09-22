@@ -5,7 +5,48 @@ import {dataProductos} from '../data/dataPoductos';
 const Productos = ({productosGuardados, setProductosGuardados}) => {
 
   const btnAgregarHandler = (prod) => {
-    setProductosGuardados(   [ ...productosGuardados, prod  ]   );
+    //console.log(prod)
+    if (productosGuardados.length === 0) {
+      setProductosGuardados(   
+      [ 
+        ...productosGuardados, 
+        {id: prod.id, descripcion: prod.descripcion, cantidad: 1}  
+      ] );
+
+    }else{
+      //Clonamos productos guardados
+      const clonProductos = [...productosGuardados];
+
+      //Verificamos si ID existe
+      const idEnCarrito = clonProductos.filter( (clon) => ( clon.id === prod.id)).length > 0; //Devuelve true si está ese producto
+
+      //Si ya está el producto actualizamos
+      if (idEnCarrito) {
+        //Buscamos posición y actualizamos la cantidad
+        clonProductos.forEach((producto, idx) => {
+          if (producto.id === prod.id) {
+            const cantidad = clonProductos[idx].cantidad;
+            clonProductos[idx] = {
+              id: prod.id, 
+              descripcion: prod.descripcion,
+              cantidad: cantidad +1
+            }
+          }          
+        });
+        //Si no existe el producto en el carrito lo aagregamos
+      }else{
+        clonProductos.push( { 
+          id: prod.id, 
+          descripcion: prod.descripcion,
+          cantidad: 1})
+      }
+      //Actualizamos carrito
+      setProductosGuardados(clonProductos);
+    }
+
+
+  /*   setProductosGuardados(   [ ...productosGuardados, 
+      {id: prod.id, descripcion: prod.descripcion, cantidad: prod.length}  ]   ); */
   }
 
 
@@ -21,7 +62,7 @@ const Productos = ({productosGuardados, setProductosGuardados}) => {
             dataProductos.map( (producto, i)=>(
               <DivProducto key={producto.id} className="col-6">
                 <p>{producto.descripcion}</p>
-                <button type="button" className="btn btn-outline-primary mb-3 btn-lg" onClick={() => btnAgregarHandler(producto)}>Agregar</button>
+                <button type="button" className="btn btn-outline-primary mb-3 btn-lg" onClick={() => btnAgregarHandler(producto)}>Guardados</button>
               </DivProducto>
             ))
           }

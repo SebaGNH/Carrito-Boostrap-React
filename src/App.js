@@ -10,6 +10,7 @@ import Carrito from './components/Carrito';
 function App() {
   //Productos guardados
   const [productosGuardados, setProductosGuardados] = useState([])
+  
 
   return (
     <Fragment>
@@ -39,7 +40,9 @@ function App() {
           </DivMain>
 
           <Aside className='col-4'>
-            <Carrito />
+            <Carrito 
+              productosGuardados={productosGuardados}
+            />
           </Aside>
         </Row>
       </div>

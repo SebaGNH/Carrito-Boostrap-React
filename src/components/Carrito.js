@@ -2,17 +2,22 @@ import React, {Fragment,useState} from 'react';
 import styled from 'styled-components';
 import {dataCarrito} from '../data/dataPoductos';
 
-const Carrito = () => {
-  const [carrito, setCarrito] = useState(dataCarrito);
-
+const Carrito = ({productosGuardados}) => {
+  //console.log(productosGuardados)
+  //const [carrito, setCarrito] = useState(productosGuardados);
 
   return (
     <Fragment>
       <h2>Carrito de compras</h2>
       
       {
-        carrito.length > 0?
-        carrito.map( (c) => <p key={c.id} > {c.nombre} </p> )
+        productosGuardados.length > 0?
+        productosGuardados.map( (c, idx) => (
+          <DivProductos key={idx} className='py-3'>
+            <P> {c.descripcion} </P>
+            Cantidad: {c.cantidad}
+          </DivProductos>
+        ) )
         :
         <p>Carrito vacío</p>
       }
@@ -20,3 +25,14 @@ const Carrito = () => {
   );
 }
 export default Carrito;
+
+
+const DivProductos = styled.div`
+  border-bottom: 1px solid #ebebf3;
+  font-size: .9rem;
+`;
+
+const P = styled.p`
+  font-weight: bold;
+  font-size: 1rem;
+`;
