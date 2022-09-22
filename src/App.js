@@ -10,7 +10,7 @@ import Carrito from './components/Carrito';
 function App() {
   //Productos guardados
   const [productosGuardados, setProductosGuardados] = useState([])
-  
+
 
   return (
     <Fragment>
@@ -25,7 +25,7 @@ function App() {
             <NavLink to={"/tienda"} className="navbar-brand btn btn-primary btn-lg" href="#">Tienda</NavLink>        
           </Nav>
 
-          <DivMain className="col-8">
+          <DivMain className="col-10">
             <Routes>
               <Route path="/inicio" element={<Inicio />} />
               <Route path="/blog" element={<Blog />} />
@@ -39,7 +39,7 @@ function App() {
             </Routes>
           </DivMain>
 
-          <Aside className='col-4'>
+          <Aside className='col-2'>
             <Carrito 
               productosGuardados={productosGuardados}
             />

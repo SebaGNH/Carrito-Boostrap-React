@@ -23,17 +23,16 @@ const Productos = ({productosGuardados, setProductosGuardados}) => {
       //Si ya está el producto actualizamos
       if (idEnCarrito) {
         //Buscamos posición y actualizamos la cantidad
-        clonProductos.forEach((producto, idx) => {
-          if (producto.id === prod.id) {
-            const cantidad = clonProductos[idx].cantidad;
+        clonProductos.forEach((clonProd, idx) => {
+          if (clonProd.id === prod.id) {    
             clonProductos[idx] = {
               id: prod.id, 
               descripcion: prod.descripcion,
-              cantidad: cantidad +1
+              cantidad: clonProductos[idx].cantidad +1 //Sumamos 1 a la cantidad existente
             }
           }          
         });
-        //Si no existe el producto en el carrito lo aagregamos
+        //Si no existe el producto lo agregamos
       }else{
         clonProductos.push( { 
           id: prod.id, 
@@ -43,10 +42,6 @@ const Productos = ({productosGuardados, setProductosGuardados}) => {
       //Actualizamos carrito
       setProductosGuardados(clonProductos);
     }
-
-
-  /*   setProductosGuardados(   [ ...productosGuardados, 
-      {id: prod.id, descripcion: prod.descripcion, cantidad: prod.length}  ]   ); */
   }
 
 
