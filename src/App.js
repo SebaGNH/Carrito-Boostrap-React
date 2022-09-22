@@ -1,12 +1,16 @@
-import React,{Fragment} from 'react'
+import React,{Fragment, useState} from 'react'
 import styled from 'styled-components';
 import {Routes,Route,NavLink,Navigate} from 'react-router-dom';
 import Inicio from './pages/Inicio';
 import Blog from './pages/Blog';
 import Tienda from './pages/Tienda';
+import Carrito from './components/Carrito';
 
 
 function App() {
+  //Productos guardados
+  const [productosGuardados, setProductosGuardados] = useState([])
+
   return (
     <Fragment>
       <div className="container mt-4">
@@ -24,13 +28,18 @@ function App() {
             <Routes>
               <Route path="/inicio" element={<Inicio />} />
               <Route path="/blog" element={<Blog />} />
-              <Route path="/tienda" element={<Tienda />} />
+              {/* <Route path="/tienda" element={<Tienda />} /> */}
+              <Route path="/tienda" element={<Tienda 
+                productosGuardados={productosGuardados}
+                setProductosGuardados={setProductosGuardados}
+              />} />
+
               <Route path='*' element={<Inicio />} />
             </Routes>
           </DivMain>
 
           <Aside className='col-4'>
-            <h3>Sidebar</h3>
+            <Carrito />
           </Aside>
         </Row>
       </div>

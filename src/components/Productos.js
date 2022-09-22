@@ -1,8 +1,14 @@
-import React,{Fragment} from 'react';
+import React,{Fragment, useState} from 'react';
 import styled from 'styled-components';
-import dataProductos from '../data/dataPoductos';
+import {dataProductos} from '../data/dataPoductos';
 
-const Productos = () => {
+const Productos = ({productosGuardados, setProductosGuardados}) => {
+
+  const btnAgregarHandler = (prod) => {
+    setProductosGuardados(   [ ...productosGuardados, prod  ]   );
+  }
+
+
   return (
     <Fragment>
       <div className="container">
@@ -12,10 +18,10 @@ const Productos = () => {
           </div>
 
           {
-            dataProductos.map( (prod, i)=>(
-              <DivProducto key={prod.id} className="col-6">
-                <p>{prod.descripcion}</p>
-                <button type="button" className="btn btn-outline-primary mb-3 btn-lg">Agregar</button>
+            dataProductos.map( (producto, i)=>(
+              <DivProducto key={producto.id} className="col-6">
+                <p>{producto.descripcion}</p>
+                <button type="button" className="btn btn-outline-primary mb-3 btn-lg" onClick={() => btnAgregarHandler(producto)}>Agregar</button>
               </DivProducto>
             ))
           }

@@ -2,11 +2,14 @@ import React from 'react'
 import Productos from '../components/Productos';
 
 
-const Tienda = () => {
+const Tienda = ({productosGuardados, setProductosGuardados}) => {
   return (
     <>
       <h1>Tienda</h1>
-      <Productos/>
+      <Productos
+        productosGuardados={productosGuardados}
+        setProductosGuardados={setProductosGuardados}
+      />
     </>
   );
 }
