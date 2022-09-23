@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Carrito-Boostrap-React/static/css/main.9e69b427.css",
+    "main.js": "/Carrito-Boostrap-React/static/js/main.a015b880.js",
+    "index.html": "/Carrito-Boostrap-React/index.html",
+    "main.9e69b427.css.map": "/Carrito-Boostrap-React/static/css/main.9e69b427.css.map",
+    "main.a015b880.js.map": "/Carrito-Boostrap-React/static/js/main.a015b880.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9e69b427.css",
+    "static/js/main.a015b880.js"
+  ]
+}
